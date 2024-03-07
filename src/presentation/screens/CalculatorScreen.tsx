@@ -4,7 +4,20 @@ import { CalculatorButton } from "../components/CalculatorButton"
 import { useCalculator } from "../hooks/useCalculator"
 
 export const CalculatorScreen = () => {
-    const { number, prevNumber, buildNumber, clean, deleteOperation, toggleSign, addOperation, divideOperation, multiplyOperation, subtractOperation, calculateResult } = useCalculator();
+    const {
+        number,
+        prevNumber,
+        buildNumber,
+        clean,
+        deleteOperation,
+        toggleSign,
+        addOperation,
+        divideOperation,
+        multiplyOperation,
+        subtractOperation,
+        calculateResult,
+        formula
+    } = useCalculator();
 
     return (
         <View style={styles.calculatorContainer}>
@@ -14,15 +27,19 @@ export const CalculatorScreen = () => {
                     numberOfLines={1}
                     style={styles.mainResult}
                 >
-                    {number}
+                    {formula}
                 </Text>
-                <Text
-                    adjustsFontSizeToFit
-                    numberOfLines={1}
-                    style={styles.subResult}
-                >
-                    {prevNumber === '0' ? '0' : prevNumber}
-                </Text>
+                {
+                    (formula === prevNumber)
+                        ? <Text style={styles.subResult}> </Text>
+                        : <Text
+                            adjustsFontSizeToFit
+                            numberOfLines={1}
+                            style={styles.subResult}
+                        >
+                            {prevNumber}
+                        </Text>
+                }
             </View>
 
             <View style={styles.row}>
