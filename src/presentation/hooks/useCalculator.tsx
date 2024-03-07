@@ -141,5 +141,6 @@ export const useCalculator = () => {
         multiplyOperation,
         prevNumber,
         calculateResult
+        
     }
 }
